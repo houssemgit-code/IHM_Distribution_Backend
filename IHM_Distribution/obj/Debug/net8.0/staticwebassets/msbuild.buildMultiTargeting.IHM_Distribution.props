@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\IHM_Distribution.props" />
-</Project>

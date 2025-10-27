@@ -1,0 +1,6 @@
+@IHM_Distribution_HostAddress = http://localhost:5204
+
+GET {{IHM_Distribution_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

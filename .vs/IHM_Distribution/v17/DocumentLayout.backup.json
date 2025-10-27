@@ -1,0 +1,557 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\dailytrip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\dailytrip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\currentcarstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\currentcarstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\controllers\\currentcarstockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\controllers\\currentcarstockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\loadeditem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\loadeditem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\dtos\\productimageuploaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\dtos\\productimageuploaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\ihm_distribution.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\ihm_distribution.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\data\\migrations\\20251026171358_addproductimageentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\data\\migrations\\20251026171358_addproductimageentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\data\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\data\\repository\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\data\\repository\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\data\\repository\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\data\\repository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\data\\repository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\controllers\\clientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\controllers\\clientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\controllers\\agentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\controllers\\agentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\data\\repository\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\data\\repository\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\controllers\\receiptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\controllers\\receiptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\controllers\\dailytripscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\controllers\\dailytripscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\data\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\data\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\returneditem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\returneditem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\receiptdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\receiptdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\receipt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\receipt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\models\\agent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\models\\agent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\data\\migrations\\20250920204306_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\data\\migrations\\20250920204306_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\dtos\\usertokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\dtos\\usertokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|c:\\users\\khawlabenmansour\\downloads\\ihm_distribution\\ihm_distribution\\ihm_distribution\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}|IHM_Distribution\\IHM_Distribution.csproj|solutionrelative:ihm_distribution\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DailyTrip.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\DailyTrip.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\DailyTrip.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\DailyTrip.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\DailyTrip.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwBYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:17:22.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoadedItem.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\LoadedItem.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\LoadedItem.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\LoadedItem.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\LoadedItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:17:43.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CurrentCarStock.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\CurrentCarStock.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\CurrentCarStock.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\CurrentCarStock.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\CurrentCarStock.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:15:48.98Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CurrentCarStockController.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\CurrentCarStockController.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Controllers\\CurrentCarStockController.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\CurrentCarStockController.cs",
+              "RelativeToolTip": "IHM_Distribution\\Controllers\\CurrentCarStockController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T16:57:42.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "IHM_Distribution\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAC0BAAAAAAAAAAAqwFQBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T16:53:21.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\Product.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\Product.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:09:09.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Program.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Program.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Program.cs",
+              "RelativeToolTip": "IHM_Distribution\\Program.cs",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAkwLcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:24:35.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AgentsController.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\AgentsController.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Controllers\\AgentsController.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\AgentsController.cs",
+              "RelativeToolTip": "IHM_Distribution\\Controllers\\AgentsController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwM0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T16:55:52.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductImageUploadDto.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Dtos\\ProductImageUploadDto.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Dtos\\ProductImageUploadDto.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Dtos\\ProductImageUploadDto.cs",
+              "RelativeToolTip": "IHM_Distribution\\Dtos\\ProductImageUploadDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T17:23:46.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ClientsController.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\ClientsController.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Controllers\\ClientsController.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\ClientsController.cs",
+              "RelativeToolTip": "IHM_Distribution\\Controllers\\ClientsController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAA1wDsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T16:26:44.921Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IHM_Distribution.http",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution.http",
+              "RelativeDocumentMoniker": "IHM_Distribution\\IHM_Distribution.http",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution.http",
+              "RelativeToolTip": "IHM_Distribution\\IHM_Distribution.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-10-26T17:22:45.991Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Repository\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Data\\Repository\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Repository\\IUnitOfWork.cs",
+              "RelativeToolTip": "IHM_Distribution\\Data\\Repository\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:23:13.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Repository\\IRepository.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Data\\Repository\\IRepository.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Repository\\IRepository.cs",
+              "RelativeToolTip": "IHM_Distribution\\Data\\Repository\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:22:05.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20251026171358_AddProductImageEntity.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Migrations\\20251026171358_AddProductImageEntity.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Data\\Migrations\\20251026171358_AddProductImageEntity.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Migrations\\20251026171358_AddProductImageEntity.cs",
+              "RelativeToolTip": "IHM_Distribution\\Data\\Migrations\\20251026171358_AddProductImageEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T17:13:58.686Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Repository\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Data\\Repository\\UnitOfWork.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Repository\\UnitOfWork.cs",
+              "RelativeToolTip": "IHM_Distribution\\Data\\Repository\\UnitOfWork.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAgwBgAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:24:17.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Repository\\Repository.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Data\\Repository\\Repository.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Repository\\Repository.cs",
+              "RelativeToolTip": "IHM_Distribution\\Data\\Repository\\Repository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAwwEoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:23:48.934Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ReceiptsController.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\ReceiptsController.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Controllers\\ReceiptsController.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\ReceiptsController.cs",
+              "RelativeToolTip": "IHM_Distribution\\Controllers\\ReceiptsController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAA+wAcBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T16:57:08.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DailyTripsController.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\DailyTripsController.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Controllers\\DailyTripsController.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\DailyTripsController.cs",
+              "RelativeToolTip": "IHM_Distribution\\Controllers\\DailyTripsController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAA+wL0AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T16:56:24.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\appsettings.json",
+              "RelativeDocumentMoniker": "IHM_Distribution\\appsettings.json",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\appsettings.json",
+              "RelativeToolTip": "IHM_Distribution\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-20T20:30:09.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Data\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "IHM_Distribution\\Data\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAALsBAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T16:55:16.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ProductImage.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\ProductImage.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\ProductImage.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\ProductImage.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\ProductImage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T16:52:23.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "IHM_Distribution\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:34:20.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ReturnedItem.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\ReturnedItem.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\ReturnedItem.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\ReturnedItem.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\ReturnedItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:18:28.761Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ReceiptDetail.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\ReceiptDetail.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\ReceiptDetail.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\ReceiptDetail.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\ReceiptDetail.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAcwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:10:49.227Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Receipt.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\Receipt.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\Receipt.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\Receipt.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\Receipt.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAcwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:05:16.97Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Client.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\Client.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\Client.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\Client.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\Client.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAcwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:04:38.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Agent.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\Agent.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Models\\Agent.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Models\\Agent.cs",
+              "RelativeToolTip": "IHM_Distribution\\Models\\Agent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:08:46.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "20250920204306_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Migrations\\20250920204306_InitialCreate.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Data\\Migrations\\20250920204306_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\Migrations\\20250920204306_InitialCreate.cs",
+              "RelativeToolTip": "IHM_Distribution\\Data\\Migrations\\20250920204306_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:43:06.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "IHM_Distribution\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\appsettings.Development.json",
+              "RelativeToolTip": "IHM_Distribution\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-20T20:30:12.201Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UserTokenDto.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Dtos\\UserTokenDto.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Dtos\\UserTokenDto.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Dtos\\UserTokenDto.cs",
+              "RelativeToolTip": "IHM_Distribution\\Dtos\\UserTokenDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:36:06.018Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Dtos\\LoginDto.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Dtos\\LoginDto.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Dtos\\LoginDto.cs",
+              "RelativeToolTip": "IHM_Distribution\\Dtos\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:37:16.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "IHM_Distribution\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAuwEUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T20:19:33.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "IHM_Distribution\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\KhawlaBENMANSOUR\\Downloads\\IHM_Distribution\\IHM_Distribution\\IHM_Distribution\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "IHM_Distribution\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T19:54:15.806Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

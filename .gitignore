@@ -1,0 +1,15 @@
+# Visual Studio cache folders
+.vs/
+
+# Build folders for subprojects
+IHM_Distribution/bin/
+IHM_Distribution/obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log

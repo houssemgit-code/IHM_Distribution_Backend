@@ -2,7 +2,7 @@
 {
     public class StartTripRequestDto
     {
-        public int AgentId { get; set; }
+        public Guid AgentId { get; set; }
         public List<LoadedItemRequestDto> LoadedItems { get; set; } = new List<LoadedItemRequestDto>();
     }
 }

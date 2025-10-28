@@ -34,29 +34,35 @@ namespace IHM_Distribution.Controllers
 			var tokenHandler = new JwtSecurityTokenHandler();
 			var key = Encoding.ASCII.GetBytes(_config["JwtSettings:SecretKey"]!);
 
-			var tokenDescriptor = new SecurityTokenDescriptor
-			{
-				Subject = new ClaimsIdentity(new Claim[]
-				{
-					new Claim(ClaimTypes.NameIdentifier, agent.Id.ToString()),
-					new Claim(ClaimTypes.Name, agent.Name),
-					new Claim(ClaimTypes.Role, "Agent") // You can add roles if needed
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, agent.Id.ToString()),
+                    new Claim(ClaimTypes.Name, agent.Name),
+                    new Claim(ClaimTypes.Email, agent.UserEmail ?? string.Empty),
+                    new Claim(ClaimTypes.Role, agent.Role ?? "Agent")
                 }),
-				Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_config["JwtSettings:ExpiryInMinutes"])),
-				Issuer = _config["JwtSettings:Issuer"],
-				Audience = _config["JwtSettings:Audience"],
-				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-			};
+                            Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_config["JwtSettings:ExpiryInMinutes"])),
+                            Issuer = _config["JwtSettings:Issuer"],
+                            Audience = _config["JwtSettings:Audience"],
+                            SigningCredentials = new SigningCredentials(
+                    new SymmetricSecurityKey(key),
+                    SecurityAlgorithms.HmacSha256Signature)
+            };
 
-			var token = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
 			var tokenString = tokenHandler.WriteToken(token);
 
-			return new UserTokenDto
-			{
-				Token = tokenString,
-				Name = agent.Name,
-				Expiration = token.ValidTo
-			};
-		}
-	}
+            return new UserTokenDto
+            {
+                Token = tokenString,
+                Name = agent.Name,
+				UserEmail = agent.UserEmail,
+                Expiration = token.ValidTo,
+                Id = agent.Id // <-- Add this line
+            };
+
+        }
+    }
 }

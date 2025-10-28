@@ -1,24 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using IHM_Distribution.Models.Common;
 
 namespace IHM_Distribution.Models
 {
-	public class LoadedItem
+	public class LoadedItem : Entity
 	{
-		public int Id { get; set; }
+		[Required]
+		public Guid DailyTripId { get; set; }
 
 		[Required]
-		public int DailyTripId { get; set; }
-
-		[Required]
-		public int ProductId { get; set; }
+		public Guid ProductId { get; set; }
 
 		[Required]
 		[Range(1, int.MaxValue, ErrorMessage = "Loaded quantity must be at least 1")]
 		public int QuantityLoaded { get; set; } // The amount taken from the warehouse
 
-		// Navigation Properties
-		[JsonIgnore]
+        // Navigation Properties
+        [JsonIgnore]
 		public DailyTrip? DailyTrip { get; set; }
 
 		[JsonIgnore]

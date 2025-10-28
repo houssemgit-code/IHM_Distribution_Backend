@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using IHM_Distribution.Models.Common;
 
 namespace IHM_Distribution.Models
 {
-	public class Client
+	public class Client : Entity
 	{
-		public int Id { get; set; }
-
 		[Required]
 		[MaxLength(200)]
 		public string ShopName { get; set; } = string.Empty;

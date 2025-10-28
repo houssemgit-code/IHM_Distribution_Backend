@@ -1,18 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using IHM_Distribution.Models.Common;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace IHM_Distribution.Models
 {
-	public class ReceiptDetail
+	public class ReceiptDetail : Entity
 	{
-		public int Id { get; set; }
+		[Required]
+		public Guid ReceiptId { get; set; }
 
 		[Required]
-		public int ReceiptId { get; set; }
-
-		[Required]
-		public int ProductId { get; set; }
+		public Guid ProductId { get; set; }
 
 		[Required]
 		[Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1")]

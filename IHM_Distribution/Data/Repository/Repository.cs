@@ -14,9 +14,9 @@ namespace IHM_Distribution.Data.Repository
             _dbSet = _context.Set<T>();
         }
 
-        public virtual async Task<T?> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
+        public virtual async Task<T?> GetByIdAsync(Guid id) => await _dbSet.FindAsync(id);
 
-        public virtual async Task<T?> GetByIdAsync(int id, string? includeProperties = null)
+        public virtual async Task<T?> GetByIdAsync(Guid id, string? includeProperties = null)
         {
             IQueryable<T> query = _dbSet;
 
@@ -28,7 +28,7 @@ namespace IHM_Distribution.Data.Repository
                 }
             }
 
-            return await query.FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
+            return await query.FirstOrDefaultAsync(e => EF.Property<Guid>(e, "Id") == id);
         }
 
         public virtual async Task<IEnumerable<T>> GetAllAsync(string? includeProperties = null)

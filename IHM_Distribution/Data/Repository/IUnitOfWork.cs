@@ -1,9 +1,10 @@
 ﻿using IHM_Distribution.Models;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace IHM_Distribution.Data.Repository
 {
-	public interface IUnitOfWork
-	{
+	public interface IUnitOfWork : IDisposable
+    {
 		// Core Entities
 		IRepository<Agent> Agents { get; }
 		IRepository<Client> Clients { get; }
@@ -21,5 +22,8 @@ namespace IHM_Distribution.Data.Repository
 		// Save and check changes
 		Task<bool> CompleteAsync();
 		bool HasChanges();
-	}
+
+        Task<IDbContextTransaction> BeginTransactionAsync();
+
+    }
 }

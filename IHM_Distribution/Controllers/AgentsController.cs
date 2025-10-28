@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using IHM_Distribution.Data.Repository;
 using IHM_Distribution.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IHM_Distribution.Controllers
 {
@@ -36,7 +37,7 @@ namespace IHM_Distribution.Controllers
 
         // GET: api/agents/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Agent>> GetAgent(int id)
+        public async Task<ActionResult<Agent>> GetAgent(Guid id)
         {
             try
             {
@@ -103,7 +104,7 @@ namespace IHM_Distribution.Controllers
 
         // PUT: api/agents/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAgent(int id, Agent agent)
+        public async Task<IActionResult> UpdateAgent(Guid id, Agent agent)
         {
             try
             {
@@ -163,8 +164,9 @@ namespace IHM_Distribution.Controllers
         }
 
         // DELETE: api/agents/5
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAgent(int id)
+        public async Task<IActionResult> DeleteAgent(Guid id)
         {
             try
             {
@@ -198,7 +200,7 @@ namespace IHM_Distribution.Controllers
             }
         }
 
-        private async Task<bool> AgentExists(int id)
+        private async Task<bool> AgentExists(Guid id)
         {
             return await _unitOfWork.Agents.GetByIdAsync(id) != null;
         }

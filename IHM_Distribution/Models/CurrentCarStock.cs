@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using IHM_Distribution.Models.Common;
 
 namespace IHM_Distribution.Models
 {
-	public class CurrentCarStock
+	public class CurrentCarStock : Entity
 	{
-		// The ProductId is the primary key. Only one record per product.
-		[Key]
-		public int ProductId { get; set; }
+		public Guid ProductId { get; set; }
 
 		[Required]
 		[Range(0, int.MaxValue)]

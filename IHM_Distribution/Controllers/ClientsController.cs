@@ -36,7 +36,7 @@ namespace IHM_Distribution.Controllers
 
         // GET: api/clients/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Client>> GetClient(int id)
+        public async Task<ActionResult<Client>> GetClient(Guid id)
         {
             try
             {
@@ -145,7 +145,7 @@ namespace IHM_Distribution.Controllers
 
         // PUT: api/clients/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateClient(int id, Client client)
+        public async Task<IActionResult> UpdateClient(Guid id, Client client)
         {
             try
             {
@@ -203,7 +203,7 @@ namespace IHM_Distribution.Controllers
 
         // DELETE: api/clients/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClient(int id)
+        public async Task<IActionResult> DeleteClient(Guid id)
         {
             try
             {
@@ -237,7 +237,7 @@ namespace IHM_Distribution.Controllers
             }
         }
 
-        private async Task<bool> ClientExists(int id)
+        private async Task<bool> ClientExists(Guid id)
         {
             return await _unitOfWork.Clients.GetByIdAsync(id) != null;
         }

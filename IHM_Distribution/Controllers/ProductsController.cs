@@ -39,7 +39,7 @@ namespace IHM_Distribution.Controllers
 
         // GET: api/products/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct(Guid id)
         {
             try
             {
@@ -124,7 +124,7 @@ namespace IHM_Distribution.Controllers
 
         // PUT: api/products/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, Product product)
+        public async Task<IActionResult> UpdateProduct(Guid id, Product product)
         {
             try
             {
@@ -178,7 +178,7 @@ namespace IHM_Distribution.Controllers
 
         // DELETE: api/products/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteProduct(Guid id)
         {
             try
             {
@@ -219,7 +219,7 @@ namespace IHM_Distribution.Controllers
 
         // POST: api/products/5/images
         [HttpPost("{id}/images")]
-        public async Task<ActionResult<ProductImage>> AddProductImage(int id, [FromForm] ProductImageUploadDto dto)
+        public async Task<ActionResult<ProductImage>> AddProductImage(Guid id, [FromForm] ProductImageUploadDto dto)
         {
             try
             {
@@ -299,7 +299,7 @@ namespace IHM_Distribution.Controllers
 
         // DELETE: api/products/images/5
         [HttpDelete("images/{imageId}")]
-        public async Task<IActionResult> DeleteProductImage(int imageId)
+        public async Task<IActionResult> DeleteProductImage(Guid imageId)
         {
             try
             {
@@ -333,7 +333,7 @@ namespace IHM_Distribution.Controllers
             }
         }
 
-        private async Task<bool> ProductExists(int id)
+        private async Task<bool> ProductExists(Guid id)
         {
             return await _unitOfWork.Products.GetByIdAsync(id) != null;
         }

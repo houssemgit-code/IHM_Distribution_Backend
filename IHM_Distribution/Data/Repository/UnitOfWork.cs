@@ -1,12 +1,15 @@
 ﻿using IHM_Distribution.Models;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace IHM_Distribution.Data.Repository
 {
 	public class UnitOfWork : IUnitOfWork
 	{
 		private readonly AppDbContext _context;
+        private bool _disposed = false;
 
-		public UnitOfWork(AppDbContext context)
+
+        public UnitOfWork(AppDbContext context)
 		{
 			_context = context;
 		}
@@ -47,5 +50,29 @@ namespace IHM_Distribution.Data.Repository
 
 		public async Task<bool> CompleteAsync() => await _context.SaveChangesAsync() > 0;
 		public bool HasChanges() => _context.ChangeTracker.HasChanges();
-	}
+
+        public async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            return await _context.Database.BeginTransactionAsync();
+        }
+
+        // Dispose pattern implementation
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _context?.Dispose();
+                }
+                _disposed = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+    }
 }

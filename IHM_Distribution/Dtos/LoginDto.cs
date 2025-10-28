@@ -6,5 +6,8 @@ namespace IHM_Distribution.Dtos
 	{
 		[Required]
 		public string PinCode { get; set; } = string.Empty;
-	}
+
+        [Required]
+        public string UserEmail { get; set; } = string.Empty;
+    }
 }

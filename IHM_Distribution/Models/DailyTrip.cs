@@ -1,19 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using IHM_Distribution.Models.Common;
 
 namespace IHM_Distribution.Models
 {
-	public class DailyTrip
+	public class DailyTrip : Entity
 	{
-		public int Id { get; set; }
-
 		[Required]
-		[DataType(DataType.Date)]
-		public DateTime Date { get; set; } = DateTime.Today;
+        public DateTime Date { get; set; } = DateTime.UtcNow.Date;
 
-		[Required]
-		public int AgentId { get; set; }
+        [Required]
+		public Guid AgentId { get; set; }
 
 		// Navigation Properties
 		[JsonIgnore]

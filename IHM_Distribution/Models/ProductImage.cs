@@ -1,14 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using IHM_Distribution.Models.Common;
 
 namespace IHM_Distribution.Models
 {
-    public class ProductImage
+    public class ProductImage : Entity
     {
-        public int Id { get; set; }
-
         [Required]
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; }
 
         [Required]
         [MaxLength(500)]

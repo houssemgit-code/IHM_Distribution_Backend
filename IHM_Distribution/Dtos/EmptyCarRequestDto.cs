@@ -2,6 +2,6 @@
 {
     public class EmptyCarRequestDto
     {
-        public int DailyTripId { get; set; }
+        public Guid DailyTripId { get; set; }
     }
 }

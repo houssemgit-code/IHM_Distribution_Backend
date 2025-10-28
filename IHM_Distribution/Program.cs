@@ -1,6 +1,7 @@
 using System.Text;
 using IHM_Distribution.Data;
 using IHM_Distribution.Data.Repository;
+using IHM_Distribution.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -52,6 +53,20 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero // Remove delay of token when expire
     };
 });
+
+// Add Role-Based Authorization Policies
+builder.Services.AddAuthorization(options =>
+{
+    // Only users with role "Admin" can access endpoints with [Authorize(Roles = "Admin")]
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+
+    // Only users with role "Agent" can access endpoints with [Authorize(Roles = "Agent")]
+    options.AddPolicy("AgentOnly", policy => policy.RequireRole("Agent"));
+
+    // Mixed role example — both Admin and Agent can access
+    options.AddPolicy("AdminOrAgent", policy => policy.RequireRole("Admin", "Agent"));
+});
+
 
 // Configure Swagger with JWT support
 builder.Services.AddSwaggerGen(c =>
@@ -115,6 +130,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Register Unit of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IIdentityService, IdentityService>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

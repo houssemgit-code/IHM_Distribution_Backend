@@ -36,7 +36,7 @@ namespace IHM_Distribution.Controllers
 
         // GET: api/currentcarstock/5
         [HttpGet("{productId}")]
-        public async Task<ActionResult<CurrentCarStock>> GetProductCarStock(int productId)
+        public async Task<ActionResult<CurrentCarStock>> GetProductCarStock(Guid productId)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace IHM_Distribution.Controllers
 
         // PUT: api/currentcarstock/5
         [HttpPut("{productId}")]
-        public async Task<IActionResult> UpdateProductCarStock(int productId, CurrentCarStock carStock)
+        public async Task<IActionResult> UpdateProductCarStock(Guid productId, CurrentCarStock carStock)
         {
             try
             {

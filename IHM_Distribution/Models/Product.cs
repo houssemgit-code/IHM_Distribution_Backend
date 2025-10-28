@@ -1,13 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using IHM_Distribution.Models.Common;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace IHM_Distribution.Models
 {
-	public class Product
+	public class Product : Entity
 	{
-		public int Id { get; set; }
-
 		[Required]
 		[MaxLength(100)]
 		public string Name { get; set; } = string.Empty;

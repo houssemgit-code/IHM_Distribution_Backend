@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using IHM_Distribution.Data.Repository;
 using IHM_Distribution.Models;
 using IHM_Distribution.Dtos;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace IHM_Distribution.Controllers
 {
@@ -26,6 +27,11 @@ namespace IHM_Distribution.Controllers
             try
             {
                 var trips = await _unitOfWork.DailyTrips.GetAllAsync(includeProperties: "Agent,LoadedItems,ReturnedItems,Receipts");
+                // Filter out deleted loaded items
+                foreach (var trip in trips)
+                {
+                    trip.LoadedItems = trip.LoadedItems.Where(li => !li.IsDeleted).ToList();
+                }
                 return Ok(trips);
             }
             catch (Exception ex)
@@ -37,7 +43,7 @@ namespace IHM_Distribution.Controllers
 
         // GET: api/dailytrips/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<DailyTrip>> GetDailyTrip(int id)
+        public async Task<ActionResult<DailyTrip>> GetDailyTrip(Guid id)
         {
             try
             {
@@ -59,20 +65,21 @@ namespace IHM_Distribution.Controllers
 
         // GET: api/dailytrips/agent/5?date=2023-12-01
         [HttpGet("agent/{agentId}")]
-        public async Task<ActionResult<DailyTrip>> GetAgentDailyTrip(int agentId, [FromQuery] DateTime? date = null)
+        public async Task<ActionResult<DailyTrip>> GetAgentDailyTrip(Guid agentId, [FromQuery] DateTime? date = null)
         {
             try
             {
-                var tripDate = date ?? DateTime.Today;
+                var tripDate = (date ?? DateTime.UtcNow.Date).ToUniversalTime();
+                var nextDay = tripDate.AddDays(1);
+
                 var trip = (await _unitOfWork.DailyTrips.FindAsync(
-                    t => t.AgentId == agentId && t.Date.Date == tripDate.Date,
+                    t => t.AgentId == agentId && t.Date >= tripDate && t.Date < nextDay,
                     includeProperties: "Agent,LoadedItems,ReturnedItems,Receipts,Receipts.Client,Receipts.ReceiptDetails,Receipts.ReceiptDetails.Product"))
                     .FirstOrDefault();
 
                 if (trip == null)
-                {
                     return NotFound($"No daily trip found for agent {agentId} on {tripDate:yyyy-MM-dd}");
-                }
+                trip.LoadedItems = trip.LoadedItems.Where(li => !li.IsDeleted).ToList();
 
                 return trip;
             }
@@ -82,6 +89,7 @@ namespace IHM_Distribution.Controllers
                 return StatusCode(500, "An error occurred while retrieving the daily trip");
             }
         }
+
 
         // POST: api/dailytrips
         [HttpPost]
@@ -130,7 +138,7 @@ namespace IHM_Distribution.Controllers
 
         // PUT: api/dailytrips/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDailyTrip(int id, DailyTrip dailyTrip)
+        public async Task<IActionResult> UpdateDailyTrip(Guid id, DailyTrip dailyTrip)
         {
             try
             {
@@ -188,7 +196,7 @@ namespace IHM_Distribution.Controllers
 
         // DELETE: api/dailytrips/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDailyTrip(int id)
+        public async Task<IActionResult> DeleteDailyTrip(Guid id)
         {
             try
             {
@@ -240,9 +248,9 @@ namespace IHM_Distribution.Controllers
                 }
 
                 // Check if trip already exists for this agent today
-                var today = DateTime.Today;
-                var existingTrip = (await _unitOfWork.DailyTrips.FindAsync(
-                    t => t.AgentId == request.AgentId && t.Date.Date == today))
+                var tripDate = (DateTime.UtcNow.Date).ToUniversalTime();
+                var nextDay = tripDate.AddDays(1); var existingTrip = (await _unitOfWork.DailyTrips.FindAsync(
+                    t => t.AgentId == request.AgentId && t.Date >= tripDate && t.Date < nextDay))
                     .FirstOrDefault();
 
                 if (existingTrip != null)
@@ -252,7 +260,7 @@ namespace IHM_Distribution.Controllers
 
                 // Check for returned items from the last trip
                 var lastTrip = (await _unitOfWork.DailyTrips.FindAsync(
-                    t => t.AgentId == request.AgentId && t.Date.Date < today,
+                    t => t.AgentId == request.AgentId && t.Date >= tripDate && t.Date < nextDay,
                     includeProperties: "ReturnedItems,ReturnedItems.Product"))
                     .OrderByDescending(t => t.Date)
                     .FirstOrDefault();
@@ -260,7 +268,7 @@ namespace IHM_Distribution.Controllers
                 // Create new daily trip
                 var dailyTrip = new DailyTrip
                 {
-                    Date = today,
+                    Date = tripDate,
                     AgentId = request.AgentId,
                     LoadedItems = new List<LoadedItem>()
                 };
@@ -339,7 +347,7 @@ namespace IHM_Distribution.Controllers
 
         // POST: api/dailytrips/end/5
         [HttpPost("end/{id}")]
-        public async Task<ActionResult<DailyTrip>> EndDailyTrip(int id)
+        public async Task<ActionResult<DailyTrip>> EndDailyTrip(Guid id)
         {
             try
             {
@@ -478,7 +486,7 @@ namespace IHM_Distribution.Controllers
             }
         }
 
-        private async Task<bool> DailyTripExists(int id)
+        private async Task<bool> DailyTripExists(Guid id)
         {
             return await _unitOfWork.DailyTrips.GetByIdAsync(id) != null;
         }

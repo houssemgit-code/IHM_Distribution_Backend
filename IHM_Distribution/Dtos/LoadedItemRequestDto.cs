@@ -2,7 +2,7 @@
 {
     public class LoadedItemRequestDto
     {
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; }
         public int Quantity { get; set; }
     }
 }

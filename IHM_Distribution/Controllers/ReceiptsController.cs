@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using IHM_Distribution.Data.Repository;
 using IHM_Distribution.Models;
+using IHM_Distribution.Dtos;
 
 namespace IHM_Distribution.Controllers
 {
@@ -36,7 +37,7 @@ namespace IHM_Distribution.Controllers
 
         // GET: api/receipts/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Receipt>> GetReceipt(int id)
+        public async Task<ActionResult<Receipt>> GetReceipt(Guid id)
         {
             try
             {
@@ -58,7 +59,7 @@ namespace IHM_Distribution.Controllers
 
         // GET: api/receipts/agent/5
         [HttpGet("agent/{agentId}")]
-        public async Task<ActionResult<IEnumerable<Receipt>>> GetAgentReceipts(int agentId)
+        public async Task<ActionResult<IEnumerable<Receipt>>> GetAgentReceipts(Guid agentId)
         {
             try
             {
@@ -77,7 +78,7 @@ namespace IHM_Distribution.Controllers
 
         // GET: api/receipts/client/5
         [HttpGet("client/{clientId}")]
-        public async Task<ActionResult<IEnumerable<Receipt>>> GetClientReceipts(int clientId)
+        public async Task<ActionResult<IEnumerable<Receipt>>> GetClientReceipts(Guid clientId)
         {
             try
             {
@@ -96,8 +97,10 @@ namespace IHM_Distribution.Controllers
 
         // POST: api/receipts
         [HttpPost]
-        public async Task<ActionResult<Receipt>> CreateReceipt(Receipt receipt)
+        public async Task<ActionResult<Receipt>> CreateReceipt(CreateReceiptDto receiptDto)
         {
+            using var transaction = await _unitOfWork.BeginTransactionAsync();
+
             try
             {
                 if (!ModelState.IsValid)
@@ -106,48 +109,123 @@ namespace IHM_Distribution.Controllers
                 }
 
                 // Validate related entities exist
-                var agent = await _unitOfWork.Agents.GetByIdAsync(receipt.AgentId);
-                if (agent == null)
-                {
-                    return BadRequest("Agent not found");
-                }
+                var dailyTrip = await _unitOfWork.DailyTrips.GetByIdAsync(receiptDto.DailyTripId,
+                    includeProperties: "LoadedItems,LoadedItems.Product,ReturnedItems,Receipts,Receipts.ReceiptDetails,Agent");
 
-                var client = await _unitOfWork.Clients.GetByIdAsync(receipt.ClientId);
-                if (client == null)
-                {
-                    return BadRequest("Client not found");
-                }
-
-                var dailyTrip = await _unitOfWork.DailyTrips.GetByIdAsync(receipt.DailyTripId);
                 if (dailyTrip == null)
                 {
                     return BadRequest("Daily trip not found");
                 }
 
+                var client = await _unitOfWork.Clients.GetByIdAsync(receiptDto.ClientId);
+                if (client == null)
+                {
+                    return BadRequest("Client not found");
+                }
+
                 // Validate receipt details
-                if (receipt.ReceiptDetails == null || !receipt.ReceiptDetails.Any())
+                if (receiptDto.ReceiptDetails == null || !receiptDto.ReceiptDetails.Any())
                 {
                     return BadRequest("Receipt must have at least one item");
                 }
 
-                // Calculate total amount
-                receipt.TotalAmount = receipt.ReceiptDetails.Sum(rd => rd.LineTotal);
+                var saleDate = receiptDto.SaleDate;
 
+                if (saleDate.Kind == DateTimeKind.Unspecified)
+                {
+                    // Treat it as local and convert to UTC
+                    saleDate = DateTime.SpecifyKind(saleDate, DateTimeKind.Local).ToUniversalTime();
+                }
+                else if (saleDate.Kind == DateTimeKind.Local)
+                {
+                    saleDate = saleDate.ToUniversalTime();
+                }
+
+                // Create receipt entity
+                var receipt = new Receipt
+                {
+                    AgentId = dailyTrip.AgentId, // Get AgentId from daily trip
+                    ClientId = receiptDto.ClientId,
+                    DailyTripId = receiptDto.DailyTripId,
+                    SaleDate = saleDate,
+                    ReceiptDetails = new List<ReceiptDetail>()
+                };
+
+                decimal totalAmount = 0;
+
+                // Process each receipt detail
+                foreach (var detailDto in receiptDto.ReceiptDetails)
+                {
+                    // Calculate line total
+                    var lineTotal = detailDto.Quantity * detailDto.UnitPrice;
+
+                    // Create receipt detail
+                    var receiptDetail = new ReceiptDetail
+                    {
+                        ProductId = detailDto.ProductId,
+                        Quantity = detailDto.Quantity,
+                        UnitPrice = detailDto.UnitPrice,
+                        LineTotal = lineTotal
+                    };
+
+                    receipt.ReceiptDetails.Add(receiptDetail);
+                    totalAmount += lineTotal;
+
+                    // Check if product exists and validate stock availability
+                    var product = await _unitOfWork.Products.GetByIdAsync(detailDto.ProductId);
+                    if (product == null)
+                    {
+                        return BadRequest($"Product with ID {detailDto.ProductId} not found");
+                    }
+
+                    // Check if there's enough stock in the daily trip (loaded items - previous sales)
+                    var availableInTrip = await GetAvailableQuantityInTrip(dailyTrip, detailDto.ProductId);
+
+                    if (availableInTrip < detailDto.Quantity)
+                    {
+                        return BadRequest($"Insufficient stock in daily trip for product {product.Name}. Available: {availableInTrip}, Requested: {detailDto.Quantity}");
+                    }
+                    // --- UPDATE DAILY TRIP QUANTITY ---
+                    var loadedItem = dailyTrip.LoadedItems.FirstOrDefault(li => li.ProductId == detailDto.ProductId && !li.IsDeleted);
+                    if (loadedItem != null)
+                    {
+                        loadedItem.QuantityLoaded -= detailDto.Quantity;
+
+                        if (loadedItem.QuantityLoaded <= 0)
+                        {
+                            // Mark as deleted instead of removing
+                            loadedItem.IsDeleted = true;
+                            loadedItem.QuantityLoaded = 0; // optional, keep it at zero
+                        }
+
+                        _unitOfWork.LoadedItems.Update(loadedItem);
+                    }
+                }
+
+                // Set the calculated total amount
+                receipt.TotalAmount = totalAmount;
+
+                // Add receipt to database
                 await _unitOfWork.Receipts.AddAsync(receipt);
                 var saved = await _unitOfWork.CompleteAsync();
 
                 if (!saved)
                 {
+                    await transaction.RollbackAsync();
                     return StatusCode(500, "Failed to create receipt");
                 }
 
+                await transaction.CommitAsync();
+
                 // Reload with related data
-                var createdReceipt = await _unitOfWork.Receipts.GetByIdAsync(receipt.Id, includeProperties: "Agent,Client,DailyTrip,ReceiptDetails,ReceiptDetails.Product");
+                var createdReceipt = await _unitOfWork.Receipts.GetByIdAsync(receipt.Id,
+                    includeProperties: "Agent,Client,DailyTrip,ReceiptDetails,ReceiptDetails.Product");
 
                 return CreatedAtAction(nameof(GetReceipt), new { id = receipt.Id }, createdReceipt);
             }
             catch (Exception ex)
             {
+                await transaction.RollbackAsync();
                 _logger.LogError(ex, "Error occurred while creating a new receipt");
                 return StatusCode(500, "An error occurred while creating the receipt");
             }
@@ -155,7 +233,7 @@ namespace IHM_Distribution.Controllers
 
         // PUT: api/receipts/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateReceipt(int id, Receipt receipt)
+        public async Task<IActionResult> UpdateReceipt(Guid id, Receipt receipt)
         {
             try
             {
@@ -229,7 +307,7 @@ namespace IHM_Distribution.Controllers
 
         // DELETE: api/receipts/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteReceipt(int id)
+        public async Task<IActionResult> DeleteReceipt(Guid id)
         {
             try
             {
@@ -256,9 +334,52 @@ namespace IHM_Distribution.Controllers
             }
         }
 
-        private async Task<bool> ReceiptExists(int id)
+        // GET: api/receipts/dailytrip/5
+        [HttpGet("dailytrip/{dailyTripId}")]
+        public async Task<ActionResult<IEnumerable<Receipt>>> GetDailyTripReceipts(Guid dailyTripId)
+        {
+            try
+            {
+                var receipts = await _unitOfWork.Receipts.FindAsync(
+                    r => r.DailyTripId == dailyTripId,
+                    includeProperties: "Agent,Client,DailyTrip,ReceiptDetails,ReceiptDetails.Product");
+
+                return Ok(receipts);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting receipts for daily trip {DailyTripId}", dailyTripId);
+                return StatusCode(500, "An error occurred while retrieving daily trip receipts");
+            }
+        }
+
+        private async Task<bool> ReceiptExists(Guid id)
         {
             return await _unitOfWork.Receipts.GetByIdAsync(id) != null;
         }
+
+        // Helper method to calculate available quantity in daily trip
+        private async Task<int> GetAvailableQuantityInTrip(DailyTrip dailyTrip, Guid productId)
+        {
+            // Get loaded quantity for this product
+            var loadedQuantity = dailyTrip.LoadedItems
+                .Where(li => li.ProductId == productId)
+                .Sum(li => li.QuantityLoaded);
+
+            // Get returned quantity for this product (if any)
+            var returnedQuantity = dailyTrip.ReturnedItems
+                .Where(ri => ri.ProductId == productId)
+                .Sum(ri => ri.QuantityReturned);
+
+            // Get previously sold quantity for this product in this trip
+            var soldQuantity = dailyTrip.Receipts
+                .SelectMany(r => r.ReceiptDetails)
+                .Where(rd => rd.ProductId == productId)
+                .Sum(rd => rd.Quantity);
+
+            // Available = Loaded + Returned - Previously Sold
+            return loadedQuantity + returnedQuantity - soldQuantity;
+        }
+
     }
 }

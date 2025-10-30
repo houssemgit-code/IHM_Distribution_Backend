@@ -48,7 +48,7 @@ namespace IHM_Distribution.Data.Repository
 
         private IRepository<CurrentCarStock>? _currentCarStock;
 
-		public async Task<bool> CompleteAsync() => await _context.SaveChangesAsync() > 0;
+		public async Task<bool> CompleteAsync() => await _context.SaveChangesAsync() >= 0;
 		public bool HasChanges() => _context.ChangeTracker.HasChanges();
 
         public async Task<IDbContextTransaction> BeginTransactionAsync()

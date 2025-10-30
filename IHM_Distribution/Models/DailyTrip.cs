@@ -13,8 +13,7 @@ namespace IHM_Distribution.Models
         [Required]
 		public Guid AgentId { get; set; }
 
-		// Navigation Properties
-		[JsonIgnore]
+
 		public Agent? Agent { get; set; }
 
 		// A trip has a collection of loaded items, sold items (via receipts), and returned items.
@@ -26,7 +25,6 @@ namespace IHM_Distribution.Models
 		[NotMapped]
 		public decimal TotalSales => Receipts?.Sum(r => r.TotalAmount) ?? 0;
 
-		[JsonIgnore]
 		public ICollection<Receipt> Receipts { get; set; } = new List<Receipt>();
 	}
 }

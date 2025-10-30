@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using IHM_Distribution.Data.Repository;
 using IHM_Distribution.Models;
 using Microsoft.AspNetCore.Authorization;
+using IHM_Distribution.Dtos.Agent;
 
 namespace IHM_Distribution.Controllers
 {
@@ -59,7 +60,7 @@ namespace IHM_Distribution.Controllers
 
         // POST: api/agents
         [HttpPost]
-        public async Task<ActionResult<Agent>> CreateAgent(Agent agent)
+        public async Task<ActionResult<Agent>> CreateAgent(CreateAgentDto agent)
         {
             try
             {
@@ -79,13 +80,19 @@ namespace IHM_Distribution.Controllers
                 }
 
                 // Check if PIN code is already in use
-                var existingAgent = (await _unitOfWork.Agents.FindAsync(a => a.PinCode == agent.PinCode)).FirstOrDefault();
+                var existingAgent = (await _unitOfWork.Agents.FindAsync(a => a.UserEmail == agent.UserEmail)).FirstOrDefault();
                 if (existingAgent != null)
                 {
                     return BadRequest("PIN code is already in use");
                 }
+                var agentToAdd = new Agent
+                {
+                    Name = agent.Name,
+                    PinCode = agent.PinCode,
+                    UserEmail = agent.UserEmail,
+                };
 
-                await _unitOfWork.Agents.AddAsync(agent);
+                await _unitOfWork.Agents.AddAsync(agentToAdd);
                 var saved = await _unitOfWork.CompleteAsync();
 
                 if (!saved)
@@ -93,7 +100,7 @@ namespace IHM_Distribution.Controllers
                     return StatusCode(500, "Failed to create agent");
                 }
 
-                return CreatedAtAction(nameof(GetAgent), new { id = agent.Id }, agent);
+                return CreatedAtAction(nameof(GetAgent), new { id = agentToAdd.Id }, agentToAdd);
             }
             catch (Exception ex)
             {

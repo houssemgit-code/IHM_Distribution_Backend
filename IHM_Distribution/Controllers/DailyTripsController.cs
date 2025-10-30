@@ -78,7 +78,7 @@ namespace IHM_Distribution.Controllers
                     .FirstOrDefault();
 
                 if (trip == null)
-                    return NotFound($"No daily trip found for agent {agentId} on {tripDate:yyyy-MM-dd}");
+                    return Ok($"No daily trip found for agent {agentId} on {tripDate:yyyy-MM-dd}");
                 trip.LoadedItems = trip.LoadedItems.Where(li => !li.IsDeleted).ToList();
 
                 return trip;

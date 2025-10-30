@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace IHM_Distribution.Dtos
+namespace IHM_Distribution.Dtos.Agent
 {
 	public class LoginDto
 	{

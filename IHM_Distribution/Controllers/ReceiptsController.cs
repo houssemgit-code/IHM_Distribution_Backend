@@ -76,16 +76,26 @@ namespace IHM_Distribution.Controllers
             }
         }
 
-        // GET: api/receipts/client/5
+        // GET: api/receipts/client/{clientId}?date=2025-10-30
         [HttpGet("client/{clientId}")]
-        public async Task<ActionResult<IEnumerable<Receipt>>> GetClientReceipts(Guid clientId)
+        public async Task<ActionResult<IEnumerable<Receipt>>> GetClientReceipts(Guid clientId, [FromQuery] DateTime? date = null)
         {
             try
             {
-                var receipts = await _unitOfWork.Receipts.FindAsync(
-                    r => r.ClientId == clientId,
-                    includeProperties: "Agent,Client,DailyTrip,ReceiptDetails,ReceiptDetails.Product");
+                var receipts = await _unitOfWork.Receipts.FindAsync(r => r.ClientId == clientId,
+                    includeProperties: "Agent,Client,DailyTrip,ReceiptDetails,ReceiptDetails.Product"
+                );
 
+
+                // Apply date filter only if provided
+                if (date.HasValue)
+                {
+                    var start = date.Value.Date.ToUniversalTime();
+                    var end = start.AddDays(1);
+                    receipts = receipts.Where(r => r.CreatedDate >= start && r.CreatedDate < end);
+                }
+
+                receipts = receipts.ToList();
                 return Ok(receipts);
             }
             catch (Exception ex)
@@ -94,6 +104,30 @@ namespace IHM_Distribution.Controllers
                 return StatusCode(500, "An error occurred while retrieving client receipts");
             }
         }
+
+        // GET: api/receipts/date-range?fromDate=2025-10-01&toDate=2025-10-30
+        [HttpGet("date-range")]
+        public async Task<ActionResult<IEnumerable<Receipt>>> GetReceiptsByDateRange(
+            [FromQuery] DateTime fromDate,
+            [FromQuery] DateTime toDate)
+        {
+            try
+            {
+                var receipts = await _unitOfWork.Receipts.FindAsync(
+                    r => r.CreatedDate >= fromDate.ToUniversalTime() && r.CreatedDate < toDate.AddDays(1).ToUniversalTime(),
+                    includeProperties: "Agent,Client,DailyTrip,ReceiptDetails,ReceiptDetails.Product"
+                );
+
+                return Ok(receipts);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting receipts between {FromDate} and {ToDate}", fromDate, toDate);
+                return StatusCode(500, "An error occurred while retrieving receipts");
+            }
+        }
+
+
 
         // POST: api/receipts
         [HttpPost]

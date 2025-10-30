@@ -119,7 +119,6 @@ namespace IHM_Distribution.Data
             this.OnBeforeSaveChanges();
             result = await base.SaveChangesAsync(cancellationToken);
             this.OnAfterSaveChanges();
-
             return result;
         }
 
@@ -173,14 +172,14 @@ namespace IHM_Distribution.Data
                 {
                     if (entry.State == EntityState.Added)
                     {
-                        entity.CreatedDate = DateTimeOffset.Now;
+                        entity.CreatedDate = DateTimeOffset.UtcNow;
                         entity.CreatedBy = this.identityService.GetCurrentUserEmail();
                         entity.CreatedById = this.identityService.GetCurrentUserName();
                     }
                     else if (entry.State == EntityState.Modified)
                     {
                         entity.ModifiedBy = this.identityService.GetCurrentUserEmail();
-                        entity.ModifiedDate = DateTimeOffset.Now;
+                        entity.ModifiedDate = DateTimeOffset.UtcNow;
                     }
                 }
             }

@@ -1,5 +1,5 @@
 ﻿using IHM_Distribution.Data.Repository;
-using IHM_Distribution.Dtos;
+using IHM_Distribution.Dtos.Agent;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

@@ -1,5 +1,5 @@
 ﻿using IHM_Distribution.Data.Repository;
-using IHM_Distribution.Dtos;
+using IHM_Distribution.Dtos.Product;
 using IHM_Distribution.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -86,7 +86,7 @@ namespace IHM_Distribution.Controllers
 
         // POST: api/products
         [HttpPost]
-        public async Task<ActionResult<Product>> CreateProduct(Product product)
+        public async Task<ActionResult<Product>> CreateProduct(CreateProductDto productToAdd)
         {
             try
             {
@@ -95,16 +95,23 @@ namespace IHM_Distribution.Controllers
                     return BadRequest(ModelState);
                 }
 
-                if (string.IsNullOrWhiteSpace(product.Name))
+                if (string.IsNullOrWhiteSpace(productToAdd.Name))
                 {
                     return BadRequest("Product name is required");
                 }
 
-                if (product.Price <= 0)
+                if (productToAdd.Price <= 0)
                 {
                     return BadRequest("Price must be greater than 0");
                 }
 
+                var product = new Product()
+                {
+                    Name = productToAdd.Name,
+                    Description = productToAdd.Description,
+                    Price = productToAdd.Price,
+                    StockInWarehouse = productToAdd.StockInWarehouse,
+                };
                 await _unitOfWork.Products.AddAsync(product);
                 var saved = await _unitOfWork.CompleteAsync();
 

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using IHM_Distribution.Data.Repository;
 using IHM_Distribution.Models;
+using IHM_Distribution.Dtos.Client;
 
 namespace IHM_Distribution.Controllers
 {
@@ -106,7 +107,7 @@ namespace IHM_Distribution.Controllers
 
         // POST: api/clients
         [HttpPost]
-        public async Task<ActionResult<Client>> CreateClient(Client client)
+        public async Task<ActionResult<Client>> CreateClient(CreateClientDto clientToAdd)
         {
             try
             {
@@ -116,16 +117,26 @@ namespace IHM_Distribution.Controllers
                 }
 
                 // Validate required fields
-                if (string.IsNullOrWhiteSpace(client.ShopName))
+                if (string.IsNullOrWhiteSpace(clientToAdd.ShopName))
                 {
                     return BadRequest("Shop name is required");
                 }
 
-                if (string.IsNullOrWhiteSpace(client.OwnerName))
+                if (string.IsNullOrWhiteSpace(clientToAdd.OwnerName))
                 {
                     return BadRequest("Owner name is required");
                 }
-
+                var client = new Client()
+                {
+                    ShopName = clientToAdd.ShopName,
+                    OwnerName = clientToAdd.OwnerName,
+                    Address = clientToAdd.Address,
+                    Email = clientToAdd.Email,
+                    Latitude = clientToAdd.Latitude,
+                    Longitude = clientToAdd.Longitude,
+                    MobileNumber = clientToAdd.MobileNumber,
+                    PhoneNumber = clientToAdd.PhoneNumber,
+                };
                 await _unitOfWork.Clients.AddAsync(client);
                 var saved = await _unitOfWork.CompleteAsync();
 

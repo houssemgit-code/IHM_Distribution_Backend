@@ -23,11 +23,9 @@ namespace IHM_Distribution.Models
 		[Required]
 		public Guid DailyTripId { get; set; }
 
-		// Navigation Properties
-		[JsonIgnore]
+
 		public Agent? Agent { get; set; }
 
-		[JsonIgnore]
 		public Client? Client { get; set; }
 
 

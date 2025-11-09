@@ -13,7 +13,7 @@ namespace IHM_Distribution.Models
         [Required]
 		public Guid AgentId { get; set; }
 
-
+		public bool IsCompleted { get; set; } = false;
 		public Agent? Agent { get; set; }
 
 		// A trip has a collection of loaded items, sold items (via receipts), and returned items.

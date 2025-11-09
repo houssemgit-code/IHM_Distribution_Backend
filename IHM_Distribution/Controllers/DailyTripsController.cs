@@ -4,6 +4,7 @@ using IHM_Distribution.Data.Repository;
 using IHM_Distribution.Models;
 using IHM_Distribution.Dtos;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using IHM_Distribution.Dtos.DailyTrips;
 
 namespace IHM_Distribution.Controllers
 {
@@ -229,43 +230,42 @@ namespace IHM_Distribution.Controllers
             }
         }
 
-        // POST: api/dailytrips/start
         [HttpPost("start")]
         public async Task<ActionResult<DailyTrip>> StartDailyTrip(StartTripRequestDto request)
         {
             try
             {
                 if (!ModelState.IsValid)
-                {
                     return BadRequest(ModelState);
-                }
 
-                // Check if agent exists
                 var agent = await _unitOfWork.Agents.GetByIdAsync(request.AgentId);
                 if (agent == null)
-                {
                     return BadRequest("Agent not found");
-                }
 
-                // Check if trip already exists for this agent today
-                var tripDate = (DateTime.UtcNow.Date).ToUniversalTime();
-                var nextDay = tripDate.AddDays(1); var existingTrip = (await _unitOfWork.DailyTrips.FindAsync(
+                // Check if trip already exists today
+                var tripDate = DateTime.UtcNow.Date;
+                var nextDay = tripDate.AddDays(1);
+                var existingTrip = (await _unitOfWork.DailyTrips.FindAsync(
                     t => t.AgentId == request.AgentId && t.Date >= tripDate && t.Date < nextDay))
                     .FirstOrDefault();
 
                 if (existingTrip != null)
-                {
                     return BadRequest("A daily trip already exists for this agent today");
-                }
 
-                // Check for returned items from the last trip
+                // Get last trip to check returned items (for logging or info only)
                 var lastTrip = (await _unitOfWork.DailyTrips.FindAsync(
-                    t => t.AgentId == request.AgentId && t.Date >= tripDate && t.Date < nextDay,
+                    t => t.AgentId == request.AgentId,
                     includeProperties: "ReturnedItems,ReturnedItems.Product"))
-                    .OrderByDescending(t => t.Date)
+                    .OrderByDescending(t => t.CreatedDate)
                     .FirstOrDefault();
 
-                // Create new daily trip
+                DailyTrip completedLastTrip = null;
+
+                if (lastTrip != null && !lastTrip.IsCompleted)
+                {
+                    completedLastTrip = await EndDailyTripInternalAsync(lastTrip.Id);
+                }
+
                 var dailyTrip = new DailyTrip
                 {
                     Date = tripDate,
@@ -273,66 +273,47 @@ namespace IHM_Distribution.Controllers
                     LoadedItems = new List<LoadedItem>()
                 };
 
-                // Process loaded items and update warehouse stock
                 foreach (var itemRequest in request.LoadedItems)
                 {
                     var product = await _unitOfWork.Products.GetByIdAsync(itemRequest.ProductId);
                     if (product == null)
-                    {
                         return BadRequest($"Product with ID {itemRequest.ProductId} not found");
-                    }
 
-                    // Check if we have enough stock
-                    if (product.StockInWarehouse < itemRequest.Quantity)
-                    {
-                        return BadRequest($"Insufficient stock for product {product.Name}. Available: {product.StockInWarehouse}, Requested: {itemRequest.Quantity}");
-                    }
-
-                    // Check if this product was returned in the last trip
+                    // Check if this item was returned before (for logging only)
                     var returnedQuantity = 0;
-                    if (lastTrip != null)
+                    if (completedLastTrip != null)
                     {
-                        var returnedItem = lastTrip.ReturnedItems.FirstOrDefault(ri => ri.ProductId == itemRequest.ProductId);
+                        var returnedItem = completedLastTrip.ReturnedItems.FirstOrDefault(ri => ri.ProductId == itemRequest.ProductId);
                         if (returnedItem != null)
-                        {
                             returnedQuantity = returnedItem.QuantityReturned;
-                            _logger.LogInformation($"Found {returnedQuantity} returned items of product {product.Name} from last trip");
-                        }
                     }
 
-                    // Calculate actual quantity to load (requested - returned from last trip)
-                    var actualQuantityToLoad = Math.Max(0, itemRequest.Quantity - returnedQuantity);
+                    // Only deduct stock if the loaded quantity > previously returned quantity
+                    var newQuantityToLoad = Math.Max(0, itemRequest.Quantity - returnedQuantity);
 
-                    if (actualQuantityToLoad > 0)
+                    if (newQuantityToLoad > 0)
                     {
-                        // Update warehouse stock
-                        product.StockInWarehouse -= actualQuantityToLoad;
+                        if (product.StockInWarehouse < newQuantityToLoad)
+                            return BadRequest($"Insufficient stock for product {product.Name}. Available: {product.StockInWarehouse}, Requested: {itemRequest.Quantity}");
 
-                        // Add to loaded items
-                        dailyTrip.LoadedItems.Add(new LoadedItem
-                        {
-                            ProductId = itemRequest.ProductId,
-                            QuantityLoaded = actualQuantityToLoad
-                        });
+                        product.StockInWarehouse -= newQuantityToLoad;
                     }
 
-                    // If there were returned items, they're automatically considered as loaded
-                    // without taking from warehouse stock
-                    if (returnedQuantity > 0)
+                    dailyTrip.LoadedItems.Add(new LoadedItem
                     {
-                        _logger.LogInformation($"{returnedQuantity} items of {product.Name} from previous returns are automatically loaded");
-                    }
+                        ProductId = itemRequest.ProductId,
+                        QuantityLoaded = itemRequest.Quantity
+                    });
+
+                    _logger.LogInformation($"Loaded {itemRequest.Quantity} of {product.Name} ({returnedQuantity} came from previous returns).");
                 }
 
                 await _unitOfWork.DailyTrips.AddAsync(dailyTrip);
                 var saved = await _unitOfWork.CompleteAsync();
 
                 if (!saved)
-                {
                     return StatusCode(500, "Failed to start daily trip");
-                }
 
-                // Reload the trip with related data
                 var createdTrip = await _unitOfWork.DailyTrips.GetByIdAsync(dailyTrip.Id,
                     includeProperties: "Agent,LoadedItems,LoadedItems.Product,ReturnedItems,Receipts");
 
@@ -344,6 +325,30 @@ namespace IHM_Distribution.Controllers
                 return StatusCode(500, "An error occurred while starting the daily trip");
             }
         }
+
+        [HttpGet("last-returned-items/{agentId}")]
+        public async Task<ActionResult<IEnumerable<ReturnedItemDto>>> GetLastReturnedItems(Guid agentId)
+        {
+            var lastTrip = (await _unitOfWork.DailyTrips.FindAsync(
+                t => t.AgentId == agentId,
+                includeProperties: "ReturnedItems,ReturnedItems.Product"))
+                .OrderByDescending(t => t.CreatedDate)
+                .FirstOrDefault();
+
+            if (lastTrip == null || lastTrip.ReturnedItems == null || !lastTrip.ReturnedItems.Any())
+                return Ok(new List<ReturnedItemDto>()); // nothing returned
+
+            var result = lastTrip.ReturnedItems.Select(ri => new ReturnedItemDto
+            {
+                ProductId = ri.ProductId,
+                ProductName = ri.Product?.Name,
+                QuantityReturned = ri.QuantityReturned
+            });
+
+            return Ok(result);
+        }
+
+
 
         // POST: api/dailytrips/end/5
         [HttpPost("end/{id}")]
@@ -407,7 +412,7 @@ namespace IHM_Distribution.Controllers
                         }
                     }
                 }
-
+                trip.IsCompleted = true;
                 _unitOfWork.DailyTrips.Update(trip);
                 var saved = await _unitOfWork.CompleteAsync();
 
@@ -489,6 +494,65 @@ namespace IHM_Distribution.Controllers
         private async Task<bool> DailyTripExists(Guid id)
         {
             return await _unitOfWork.DailyTrips.GetByIdAsync(id) != null;
+        }
+
+        private async Task<DailyTrip> EndDailyTripInternalAsync(Guid id)
+        {
+            var trip = await _unitOfWork.DailyTrips.GetByIdAsync(id,
+                includeProperties: "LoadedItems,LoadedItems.Product,ReturnedItems,ReturnedItems.Product,Receipts,Receipts.ReceiptDetails");
+
+            if (trip == null)
+                return null;
+
+            // Calculate sold quantities from receipts
+            var soldQuantities = trip.Receipts
+                .SelectMany(r => r.ReceiptDetails)
+                .GroupBy(rd => rd.ProductId)
+                .Select(g => new
+                {
+                    ProductId = g.Key,
+                    QuantitySold = g.Sum(rd => rd.Quantity)
+                })
+                .ToDictionary(x => x.ProductId, x => x.QuantitySold);
+
+            // Process returns
+            foreach (var loadedItem in trip.LoadedItems)
+            {
+                var quantitySold = soldQuantities.ContainsKey(loadedItem.ProductId)
+                    ? soldQuantities[loadedItem.ProductId]
+                    : 0;
+
+                var quantityReturned = loadedItem.QuantityLoaded - quantitySold;
+
+                if (quantityReturned > 0)
+                {
+                    var existingReturn = trip.ReturnedItems.FirstOrDefault(ri => ri.ProductId == loadedItem.ProductId);
+                    if (existingReturn != null)
+                        existingReturn.QuantityReturned = quantityReturned;
+                    else
+                        trip.ReturnedItems.Add(new ReturnedItem
+                        {
+                            ProductId = loadedItem.ProductId,
+                            QuantityReturned = quantityReturned
+                        });
+                }
+                else
+                {
+                    var existingReturn = trip.ReturnedItems.FirstOrDefault(ri => ri.ProductId == loadedItem.ProductId);
+                    if (existingReturn != null)
+                        trip.ReturnedItems.Remove(existingReturn);
+                }
+            }
+
+            trip.IsCompleted = true;
+            _unitOfWork.DailyTrips.Update(trip);
+
+            var saved = await _unitOfWork.CompleteAsync();
+            if (!saved)
+                return null;
+
+            return await _unitOfWork.DailyTrips.GetByIdAsync(id,
+                includeProperties: "Agent,LoadedItems,LoadedItems.Product,ReturnedItems,ReturnedItems.Product,Receipts");
         }
     }
 }

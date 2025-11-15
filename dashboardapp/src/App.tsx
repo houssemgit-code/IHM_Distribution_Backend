@@ -48,16 +48,7 @@ const AppContent = () => {
                 <Route path="products">
                     <Route index element={<Products />} />
                     <Route path="add" element={<AddProduct />} />
-                    <Route
-                        path="edit/:id"
-                        element={
-                            <EditProduct
-                                onSubmit={function (values: any): void | Promise<void> {
-                                    throw new Error('Function not implemented.');
-                                }}
-                            />
-                        }
-                    />
+                    <Route path="edit/:id" element={<EditProduct />} />
                 </Route>
             </Route>
             <Route path="*" element={<NotFound />} />

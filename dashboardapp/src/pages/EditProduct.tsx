@@ -1,134 +1,167 @@
 // src/pages/EditProduct.tsx
-import React from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import {
-    Box,
-    Button,
-    TextField,
-    CircularProgress,
-    Container,
-    Paper,
-    Typography,
-} from '@mui/material';
-import { Product } from '../types/product';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Alert, Box, Button, CircularProgress, Typography, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Grid from '@mui/material/Grid';
+import ProductForm from '../components/products/ProductForm';
+import { getProduct, updateProduct, uploadProductImage, deleteProductImage } from "../services/api";
+import { Product, ProductFormData } from '../types/product';
 
-interface ProductFormProps {
-    initialValues?: Partial<Product>;
-    onSubmit: (values: any) => Promise<void> | void;
-    isSubmitting?: boolean;
-}
+const EditProduct: React.FC = () => {
+    const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
 
-const ProductForm: React.FC<ProductFormProps> = ({
-    initialValues = {
-        name: '',
-        description: '',
-        price: 0,
-        stockInWarehouse: 0,
-    },
-    onSubmit,
-    isSubmitting = false,
-}) => {
-    const validationSchema = Yup.object({
-        name: Yup.string().required('Name is required'),
-        description: Yup.string(),
-        price: Yup.number()
-            .required('Price is required')
-            .positive('Price must be positive'),
-        stockInWarehouse: Yup.number()
-            .required('Stock is required')
-            .min(0, 'Stock cannot be negative')
-            .integer('Stock must be a whole number'),
-    });
+    const [product, setProduct] = useState<Product | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const formik = useFormik({
-        initialValues,
-        validationSchema,
-        enableReinitialize: true,
-        onSubmit,
-    });
+    const [selectedImages, setSelectedImages] = useState<File[]>([]);
+
+    useEffect(() => {
+        const load = async () => {
+            try {
+                if (!id) return;
+                const data = await getProduct(id);
+                setProduct(data);
+            } catch (err) {
+                console.error('Failed to load product:', err);
+                setError('Failed to load product.');
+            } finally {
+                setLoading(false);
+            }
+        };
+        load();
+    }, [id]);
+
+    const handleSubmit = async (values: ProductFormData) => {
+        if (!id) return;
+        try {
+            setIsSubmitting(true);
+            setError('');
+
+            await updateProduct(id, { ...values, id });
+
+            // Upload new images
+            for (const file of selectedImages) {
+                await uploadProductImage(id, file);
+            }
+
+            navigate('/products');
+        } catch (err) {
+            console.error('Error updating product:', err);
+            setError('Failed to update product.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setSelectedImages([...selectedImages, ...Array.from(e.target.files)]);
+        }
+    };
+
+    const handleDeleteExistingImage = async (imageId: string) => {
+        if (!id) return;
+        try {
+            await deleteProductImage(imageId);
+            setProduct(prev => prev ? { ...prev, images: prev.images.filter(img => img.id !== imageId) } : prev);
+        } catch (err) {
+            console.error('Failed to delete image:', err);
+            setError('Failed to delete image.');
+        }
+    };
+
+    const handleDeleteNewImage = (index: number) => {
+        setSelectedImages(prev => prev.filter((_, i) => i !== index));
+    };
+
+    if (loading) return <Box display="flex" justifyContent="center" mt={5}><CircularProgress /></Box>;
+    if (!product) return <Alert severity="error">Product not found.</Alert>;
 
     return (
-        <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
-            <Paper sx={{ p: 4 }}>
-                <Typography variant="h5" gutterBottom>
-                    Edit Product
-                </Typography>
+        <div>
+            <Typography variant="h4" sx={{ mb: 2 }}>Edit Product</Typography>
 
-                <Box
-                    component="form"
-                    onSubmit={formik.handleSubmit}
-                    sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}
-                >
-                    <TextField
-                        fullWidth
-                        id="name"
-                        name="name"
-                        label="Product Name"
-                        value={formik.values.name}
-                        onChange={formik.handleChange}
-                        error={formik.touched.name && Boolean(formik.errors.name)}
-                        helperText={formik.touched.name && formik.errors.name}
-                        disabled={isSubmitting}
-                    />
+            {error && <Alert severity="error" sx={{ mb: 3 }}>{error}</Alert>}
 
-                    <TextField
-                        fullWidth
-                        id="description"
-                        name="description"
-                        label="Description"
-                        multiline
-                        rows={4}
-                        value={formik.values.description}
-                        onChange={formik.handleChange}
-                        error={formik.touched.description && Boolean(formik.errors.description)}
-                        helperText={formik.touched.description && formik.errors.description}
-                        disabled={isSubmitting}
-                    />
+            <ProductForm
+                initialValues={{
+                    name: product.name,
+                    description: product.description || '',
+                    price: Number(product.price),
+                    stockInWarehouse: product.stockInWarehouse,
+                }}
+                onSubmit={handleSubmit}
+                onCancel={() => navigate('/products')}
+                isSubmitting={isSubmitting}
+            />
 
-                    <Box sx={{ display: 'flex', gap: 3 }}>
-                        <TextField
-                            fullWidth
-                            id="price"
-                            name="price"
-                            label="Price"
-                            type="number"
-                            value={formik.values.price}
-                            onChange={formik.handleChange}
-                            error={formik.touched.price && Boolean(formik.errors.price)}
-                            helperText={formik.touched.price && formik.errors.price}
-                            disabled={isSubmitting}
-                        />
-
-                        <TextField
-                            fullWidth
-                            id="stockInWarehouse"
-                            name="stockInWarehouse"
-                            label="Stock in Warehouse"
-                            type="number"
-                            value={formik.values.stockInWarehouse}
-                            onChange={formik.handleChange}
-                            error={formik.touched.stockInWarehouse && Boolean(formik.errors.stockInWarehouse)}
-                            helperText={formik.touched.stockInWarehouse && formik.errors.stockInWarehouse}
-                            disabled={isSubmitting}
-                        />
-                    </Box>
-
-                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                            disabled={isSubmitting}
-                            startIcon={isSubmitting ? <CircularProgress size={20} /> : null}
-                        >
-                            {isSubmitting ? 'Saving...' : 'Save Changes'}
-                        </Button>
-                    </Box>
+            {/* Existing Images */}
+            <Box sx={{ mt: 4 }}>
+                <Typography variant="h6">Existing Images</Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mt: 1 }}>
+                    {product.images.map(img => (
+                        <Box key={img.id} sx={{ position: 'relative', width: 120, height: 120 }}>
+                            <img
+                                src={img.imageUrl}
+                                alt="product"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 4 }}
+                            />
+                            <IconButton
+                                size="small"
+                                color="error"
+                                sx={{ position: 'absolute', top: 0, right: 0 }}
+                                onClick={() => handleDeleteExistingImage(img.id)}
+                            >
+                                <DeleteIcon fontSize="small" />
+                            </IconButton>
+                        </Box>
+                    ))}
                 </Box>
-            </Paper>
-        </Container>
+            </Box>
+
+            {/* New Images */}
+            <Box sx={{ mt: 4 }}>
+                <Typography variant="h6">Add New Images</Typography>
+                <input
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    id="product-image-upload"
+                    type="file"
+                    multiple
+                    onChange={handleImageChange}
+                />
+                <label htmlFor="product-image-upload">
+                    <Button variant="outlined" component="span" sx={{ mt: 1 }}>
+                        Upload Images
+                    </Button>
+                </label>
+
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mt: 1 }}>
+                    {selectedImages.map((file, index) => (
+                        <Box key={index} sx={{ position: 'relative', width: 120, height: 120 }}>
+                            <img
+                                src={URL.createObjectURL(file)}
+                                alt="new"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 4 }}
+                            />
+                            <IconButton
+                                size="small"
+                                color="error"
+                                sx={{ position: 'absolute', top: 0, right: 0 }}
+                                onClick={() => handleDeleteNewImage(index)}
+                            >
+                                <DeleteIcon fontSize="small" />
+                            </IconButton>
+                        </Box>
+                    ))}
+                </Box>
+            </Box>
+        </div>
     );
 };
 
-export default ProductForm;
+export default EditProduct;

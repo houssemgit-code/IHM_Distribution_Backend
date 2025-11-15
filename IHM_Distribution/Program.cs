@@ -21,7 +21,9 @@ builder.Services.AddCors(options =>
         policy.WithOrigins(
                 "http://localhost",           // Local development
                 "http://10.0.2.2",            // Android emulator
-                "http://127.0.0.1"            // Localhost alternative
+                "http://127.0.0.1"  ,
+                "http://localhost:3000",  // React dev server
+                "http://127.0.0.1:3000"// Localhost alternative
             )
             .SetIsOriginAllowed(origin => true) // Allow any origin temporarily
             .AllowAnyHeader()

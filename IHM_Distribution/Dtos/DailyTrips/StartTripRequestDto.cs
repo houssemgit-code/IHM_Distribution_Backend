@@ -1,4 +1,4 @@
-﻿namespace IHM_Distribution.Dtos
+﻿namespace IHM_Distribution.Dtos.DailyTrips
 {
     public class StartTripRequestDto
     {

@@ -1,9 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IHM_Distribution", "IHM_Distribution\IHM_Distribution.csproj", "{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "dashboardapp", "dashboardapp\", "{64829EAB-D9F5-456D-62CE-5E3FD7330A49}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_49184"
+		Debug.AspNetCompiler.PhysicalPath = "dashboardapp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49184\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_49184"
+		Release.AspNetCompiler.PhysicalPath = "dashboardapp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49184\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "49184"
+		SlnRelativePath = "dashboardapp\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +36,10 @@ Global
 		{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B69CA4C-73A3-49B3-BCB7-FFAA031BDFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64829EAB-D9F5-456D-62CE-5E3FD7330A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64829EAB-D9F5-456D-62CE-5E3FD7330A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64829EAB-D9F5-456D-62CE-5E3FD7330A49}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{64829EAB-D9F5-456D-62CE-5E3FD7330A49}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
